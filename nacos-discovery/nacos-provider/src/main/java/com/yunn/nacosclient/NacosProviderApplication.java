@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by yunN on 2021/06/06.
  */
 @SpringBootApplication
-public class NacosClientApplication {
+public class NacosProviderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NacosClientApplication.class, args);
+        SpringApplication.run(NacosProviderApplication.class, args);
     }
 }
