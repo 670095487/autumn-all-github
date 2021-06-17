@@ -49,7 +49,7 @@ public class HelloSpringBootStarterApplicationTests {
         数组里面的value则是第二工作日的日期day*/
         Integer[] weekDayTransferWordDay = {3, 2, 2, 2, 2, 4, 4};
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        int weekDay = calendar.get(Calendar.DAY_OF_WEEK) - 1;//看当日是星期几
+        int weekDay = calendar.get(Calendar.DAY_OF_WEEK) - 1;//看当日是星期几，-1是因为星期2是一周的第三天，每周的第一天是周天
         return weekDayTransferWordDay[weekDay];
     }
 
