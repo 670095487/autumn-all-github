@@ -5,6 +5,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -19,12 +23,10 @@ public class HelloSpringBootStarterApplicationTests {
 
 
     @Test
-    public void t4() throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = simpleDateFormat.parse("2021-06-01 09:00:00");
+    public void t4()  {
         TimeZone tz = TimeZone.getTimeZone("Etc/Greenwich");//设置欧洲时区格林威尔标准时间
         Calendar calendar = new GregorianCalendar(tz);
-        calendar.setTime(date);
+        calendar.setTime(Date.from( LocalDateTime.now().atZone(ZoneId.of("Etc/Greenwich")).toInstant()));
         String rst = getRst(calendar);
         System.out.println(rst);
     }
