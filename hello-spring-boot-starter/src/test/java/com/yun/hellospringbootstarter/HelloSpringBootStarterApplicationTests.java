@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -20,7 +21,6 @@ public class HelloSpringBootStarterApplicationTests {
     @Test
     void contextLoads() {
     }
-
 
     @Test
     public void t4()  {
@@ -52,5 +52,20 @@ public class HelloSpringBootStarterApplicationTests {
         int weekDay = calendar.get(Calendar.DAY_OF_WEEK) - 1;//看当日是星期几，-1是因为星期2是一周的第三天，每周的第一天是周天
         return weekDayTransferWordDay[weekDay];
     }
+
+    @Test
+    public void testMonth() throws Exception {
+        SimpleDateFormat yyyyMM = new SimpleDateFormat("yyyy-MM");
+        String month = "2021-09";
+        // Date date = yyyyMM.parse(month);
+        // System.out.println(date);
+        // System.out.println(yyyyMM.format(date));
+        // System.out.println(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM")));
+        // System.out.println((LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
+        // System.out.println(LocalDate.parse((LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM"))), DateTimeFormatter.ofPattern("yyyy-MM")));
+        // System.out.println(YearMonth.parse("2021-08", DateTimeFormatter.ofPattern("yyyy-MM")));m
+
+    }
+
 
 }
