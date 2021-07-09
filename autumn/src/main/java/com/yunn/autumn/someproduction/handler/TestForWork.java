@@ -1,6 +1,6 @@
 package com.yunn.autumn.someproduction.handler;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -18,22 +18,23 @@ public class TestForWork {
 
     public static void main(String[] args) {
         List<TestForWorkDo> list = new ArrayList<>();
+
+        TestForWorkDo account1 = new TestForWorkDo.TestForWorkDoBuilder().amount(new BigDecimal("90")).account("9001").build();
+        TestForWorkDo account2 = new TestForWorkDo.TestForWorkDoBuilder().amount(new BigDecimal("10")).account("9001").build();
+        TestForWorkDo account3 = new TestForWorkDo.TestForWorkDoBuilder().amount(new BigDecimal("10")).account("9003").build();
+        TestForWorkDo account4 = new TestForWorkDo.TestForWorkDoBuilder().amount(new BigDecimal("10")).account("9004").build();
+        list.add(account1);
+        list.add(account2);
+        list.add(account3);
+        list.add(account4);
+
         Map<String, BigDecimal> resultMap = list.stream()
                 .collect(Collectors.groupingBy(TestForWorkDo::getAccount,
                         Collectors.reducing(BigDecimal.ZERO, TestForWorkDo::getAmount, BigDecimal::add)));
 
-        Map<String, TestForWorkDo> result = getStringTestForWorkDoMap(list);
-
-        List<TestForWorkDo> resultList = new ArrayList<>(result.values());
-
-        System.out.println(resultList);
+        System.out.println("resultMap = " + resultMap.toString());
 
         System.out.println(YearMonth.now().minusMonths(1).toString());
-
-        System.out.println(list.stream()
-                .sorted(Comparator.comparing(TestForWorkDo::getTime).reversed())
-                .distinct()
-                .collect(Collectors.toList()));
 
         System.out.println(YearMonth.now().getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH));
     }
@@ -50,7 +51,7 @@ public class TestForWork {
 }
 
 @Data
-@AllArgsConstructor
+@Builder
 class TestForWorkDo {
     private String account;
     private String name;
