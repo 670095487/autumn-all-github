@@ -23,11 +23,10 @@ public class TestForWork {
     private final Boolean cepBilling;
 
     private static Map<String, TestForWorkDo> getStringTestForWorkDoMap(List<TestForWorkDo> list) {
-        Map<String, TestForWorkDo> result = list.stream()
+        return list.stream()
                 .sorted(Comparator.comparing(TestForWorkDo::getTime).reversed())
                 .collect(Collectors.groupingBy(TestForWorkDo::getAccount,
                         Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
-        return result;
     }
 
     public List<TestForWorkDo> filterResult(List<TestForWorkDo> workDos) {

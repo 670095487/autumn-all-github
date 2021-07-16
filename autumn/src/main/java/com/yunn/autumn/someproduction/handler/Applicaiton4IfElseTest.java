@@ -23,6 +23,8 @@ public class Applicaiton4IfElseTest {
         testForWorkDos.add(account2);
         testForWorkDos.add(account3);
         testForWorkDos.add(account4);
-        new TestForWork(false).filterResult(testForWorkDos).forEach(System.out::println);
+        new TestForWork(false).filterResult(testForWorkDos).stream()
+        .peek(testForWorkDo -> testForWorkDo.setAccount("peek"))
+        .forEach(System.out::println);
     }
 }
