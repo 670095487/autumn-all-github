@@ -38,8 +38,6 @@ public class TestForWork {
     private Boolean filterCepBilling(TestForWorkDo testForWorkDo) {
         return StringUtils.isEmpty(testForWorkDo.getAccount()) || !"yes".equalsIgnoreCase(testForWorkDo.getAccount());
     }
-
-
 }
 
 @Data
