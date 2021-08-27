@@ -4,13 +4,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -37,6 +35,11 @@ public class TestForWork {
 
     private Boolean filterCepBilling(TestForWorkDo testForWorkDo) {
         return StringUtils.isEmpty(testForWorkDo.getAccount()) || !"yes".equalsIgnoreCase(testForWorkDo.getAccount());
+    }
+
+    @Test
+    public void testUUIDLength() {
+        System.out.println(UUID.randomUUID().toString().length());
     }
 }
 
