@@ -32,7 +32,21 @@ private static class MarkDown{
 ###三级标题
 ####四级标题
 
+<table>
+    <tr>
+    <td bgcolor="red">
 ```java
 public static class UseMarkDownRecordSomeMsg {
 }
 ```
+</tr>
+</table>
+
+
+```markdown
+我爱你 你爱我 蜜雪冰城甜蜜蜜
+```
+
+<font color=red>
+红色</font>
+

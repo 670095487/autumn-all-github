@@ -29,6 +29,12 @@ public class MergeTwoLists {
             return l2;
         }
     }
+
+    public ListNode practiceMergeTwoLists(ListNode l1, ListNode l2) {
+
+
+        return null;
+    }
 }
 
 /**
@@ -53,6 +59,14 @@ class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
     }
 }
 
