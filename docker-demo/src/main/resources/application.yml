@@ -2,8 +2,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: ${PASSWORD:ifsp2021_fuza!}
-    url: jdbc:mysql://${HOST:139.196.59.54}:${PORT:2631}/docker_use?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    password: ${PASSWORD}
+    url: jdbc:mysql://${HOST}:${PORT}/docker_use?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
 #  redis:
 #    host: 81.69.227.238
 #    port: 2672
