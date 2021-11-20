@@ -1,9 +1,11 @@
 package com.example.dockerdemo;
 
+import com.example.dockerdemo.exception.TestException;
 import com.example.dockerdemo.mapper.UserMapper;
 import com.example.dockerdemo.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +17,9 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/hello")
+@AllArgsConstructor
 public class DockerController {
 
-    @Autowired
     UserMapper userMapper;
 
     @GetMapping
@@ -28,5 +30,15 @@ public class DockerController {
     @GetMapping("/user")
     public List<User> getUsers() {
         return userMapper.getUsers();
+    }
+
+    @GetMapping("/exception/{id}")
+    public Integer getException(@PathVariable Integer id) {
+        if (id == 1) {
+            throw new TestException(9001, "test exception msg");
+        }else {
+            int a = 1 / 0;
+        }
+        return 1;
     }
 }
