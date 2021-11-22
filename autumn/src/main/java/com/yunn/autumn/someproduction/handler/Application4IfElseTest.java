@@ -10,7 +10,7 @@ import java.util.List;
  * @author yunN
  * @date 2021/07/15.
  */
-public class Applicaiton4IfElseTest {
+public class Application4IfElseTest {
 
     @Test
     public void testFilterResult() {
