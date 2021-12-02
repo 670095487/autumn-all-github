@@ -28,8 +28,8 @@ public class DockerController {
     }
 
     @GetMapping("/user")
-    public List<User> getUsers() {
-        return userMapper.getUsers();
+    public Iterable<User> getUsers() {
+        return userMapper.findAll();
     }
 
     @GetMapping("/exception/{id}")
