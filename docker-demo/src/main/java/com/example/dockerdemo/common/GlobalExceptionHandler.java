@@ -13,13 +13,13 @@ public class GlobalExceptionHandler extends RuntimeException {
 
     @ExceptionHandler(TestException.class)
     public String testGlobalException(TestException exception){
-        System.out.println("catch this : testException");
+        System.out.println("catch this : testException ");
         return exception.getMsg();
     }
 
     @ExceptionHandler(Throwable.class)
     public String testGlobalException(Throwable throwable){
-        System.out.println("catch this : unexpect exception");
+        System.out.println("catch this : unexpect exception ->  " + throwable.toString());
         return throwable.getMessage();
     }
 }

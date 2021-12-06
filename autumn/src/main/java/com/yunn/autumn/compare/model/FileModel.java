@@ -11,5 +11,4 @@ public class FileModel {
     Integer id;
     String name;
     String address;
-
 }

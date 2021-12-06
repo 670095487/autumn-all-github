@@ -1,13 +1,10 @@
-package com.example.dockerdemo;
+package com.example.dockerdemo.controller;
 
 import com.example.dockerdemo.exception.TestException;
 import com.example.dockerdemo.mapper.UserMapper;
 import com.example.dockerdemo.model.User;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,11 +13,11 @@ import java.util.List;
  * @date 2021/10/27
  */
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/DockerController")
 @AllArgsConstructor
 public class DockerController {
 
-    UserMapper userMapper;
+   private final UserMapper userMapper;
 
     @GetMapping
     public String hello() {
@@ -40,5 +37,23 @@ public class DockerController {
             int a = 1 / 0;
         }
         return 1;
+    }
+
+    @PostMapping
+    public User addUser(@RequestBody User user) {
+        userMapper.save(user);
+        return user;
+    }
+
+    @PostMapping("/batch")
+    public List<User> addUser(@RequestBody List<User> users) {
+        userMapper.saveAll(users);
+        return users;
+    }
+
+    @PutMapping
+    public User updateUser(@RequestBody User user) {
+        userMapper.updateUser(user);
+        return user;
     }
 }
