@@ -1,5 +1,6 @@
 package com.example.dockerdemo.controller;
 
+import com.example.dockerdemo.common.UpdateTool;
 import com.example.dockerdemo.exception.TestException;
 import com.example.dockerdemo.mapper.UserMapper;
 import com.example.dockerdemo.model.User;
@@ -17,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class DockerController {
 
-   private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @GetMapping
     public String hello() {
@@ -33,7 +34,7 @@ public class DockerController {
     public Integer getException(@PathVariable Integer id) {
         if (id == 1) {
             throw new TestException(9001, "test exception msg");
-        }else {
+        } else {
             int a = 1 / 0;
         }
         return 1;
@@ -53,7 +54,11 @@ public class DockerController {
 
     @PutMapping
     public User updateUser(@RequestBody User user) {
-        userMapper.updateUser(user);
+        if (user.getId() != 0) {
+            User userSource = userMapper.findById(user.getId());
+            UpdateTool.copyNullProperties(userSource, user);
+        }
+        userMapper.save(user);
         return user;
     }
 }

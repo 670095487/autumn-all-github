@@ -1,5 +1,7 @@
 package com.example.dockerdemo.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
  * @date 2021/10/27
  */
 @Entity(name = "T_USER")
+@DynamicUpdate
 public class User {
 
    @Id
