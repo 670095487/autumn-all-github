@@ -4,6 +4,8 @@ import com.example.dockerdemo.exception.TestException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Arrays;
+
 /**
  * @author yunN
  * @date 2021/11/04
@@ -19,7 +21,7 @@ public class GlobalExceptionHandler extends RuntimeException {
 
     @ExceptionHandler(Throwable.class)
     public String testGlobalException(Throwable throwable){
-        System.out.println("catch this : unexpect exception ->  " + throwable.toString());
+        System.out.println("catch this : unexpect exception ->  " + Arrays.toString(throwable.getStackTrace()) + throwable.getMessage());
         return throwable.getMessage();
     }
 }
