@@ -2,8 +2,9 @@ package com.example.dockerdemo.controller;
 
 import com.example.dockerdemo.common.UpdateTool;
 import com.example.dockerdemo.exception.TestException;
-import com.example.dockerdemo.mapper.UserMapper;
+import com.example.dockerdemo.mapper.UserRepository;
 import com.example.dockerdemo.model.User;
+import com.example.dockerdemo.specification.UserSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,16 +19,16 @@ import java.util.List;
 @AllArgsConstructor
 public class DockerController {
 
-    private final UserMapper userMapper;
+    private final UserRepository userRepository;
 
     @GetMapping
     public String hello() {
         return "Hello docker~";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/users")
     public Iterable<User> getUsers() {
-        return userMapper.findAll();
+        return userRepository.findAll();
     }
 
     @GetMapping("/exception/{id}")
@@ -42,23 +43,33 @@ public class DockerController {
 
     @PostMapping
     public User addUser(@RequestBody User user) {
-        userMapper.save(user);
+        userRepository.save(user);
         return user;
     }
 
     @PostMapping("/batch")
     public List<User> addUser(@RequestBody List<User> users) {
-        userMapper.saveAll(users);
+        userRepository.saveAll(users);
         return users;
     }
 
     @PutMapping
     public User updateUser(@RequestBody User user) {
         if (user.getId() != 0) {
-            User userSource = userMapper.findById(user.getId());
+            User userSource = userRepository.findById(user.getId());
             UpdateTool.copyNullProperties(userSource, user);
         }
-        userMapper.save(user);
+        userRepository.save(user);
         return user;
+    }
+
+    @GetMapping("{address}/address")
+    public User getByAddress(@PathVariable String address) {
+        return userRepository.findByAddress(address);
+    }
+
+    @GetMapping("{id}/id")
+    public User getById(@PathVariable Integer id) {
+        return userRepository.findById(id).orElse(new User());
     }
 }

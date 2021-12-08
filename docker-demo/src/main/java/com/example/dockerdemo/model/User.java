@@ -1,11 +1,15 @@
 package com.example.dockerdemo.model;
 
+import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author yunN
@@ -13,6 +17,7 @@ import javax.persistence.Id;
  */
 @Entity(name = "T_USER")
 @DynamicUpdate
+@DynamicInsert
 public class User {
 
    @Id
@@ -22,6 +27,24 @@ public class User {
    private String name;
    private int age;
    private String address;
+   private LocalDate birthday;
+   private LocalDateTime time;
+
+   public LocalDate getBirthday() {
+      return birthday;
+   }
+
+   public void setBirthday(LocalDate birthday) {
+      this.birthday = birthday;
+   }
+
+   public LocalDateTime getTime() {
+      return time;
+   }
+
+   public void setTime(LocalDateTime time) {
+      this.time = time;
+   }
 
    public User() {
    }
