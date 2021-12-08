@@ -57,7 +57,7 @@ class SumTask extends RecursiveTask<Long> {
                 sum += this.array[i];
                 // 故意放慢计算速度:
                 try {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.MICROSECONDS.sleep(1);
                 } catch (InterruptedException e) {
                     //
                 }

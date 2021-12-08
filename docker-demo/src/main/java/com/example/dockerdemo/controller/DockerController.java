@@ -72,4 +72,10 @@ public class DockerController {
     public User getById(@PathVariable Integer id) {
         return userRepository.findById(id).orElse(new User());
     }
+
+    @GetMapping("/between")
+    public User getByBetween(@RequestParam int id, @RequestParam String name) {
+        User byIdAndName = userRepository.findByIdAndName(id, name);
+        return byIdAndName;
+    }
 }

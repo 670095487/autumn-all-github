@@ -28,4 +28,6 @@ public interface UserRepository extends CrudRepository<User, Integer> , JpaSpeci
 
     @Query(nativeQuery = true, value = "select * from T_USER where address = ?1")
     User findByAddress(String addr);
+
+    User findByIdAndName(int id, String name);
 }
