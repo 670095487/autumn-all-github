@@ -3,9 +3,6 @@ package com.yunn.autumn.designpatterns.strategy;
 /**
  * Comparator
  *
- * @Author: Bff
- * @CreateTime: 2020-07-07
- * @Description: 策略模式接口
  */
 @FunctionalInterface
 public interface Comparator<T> {
@@ -14,10 +11,6 @@ public interface Comparator<T> {
      * o1 > o2 return 1
      * o1 < o2 return -1
      * o1 = o2 return 0
-     *
-     * @param o1
-     * @param o2
-     * @return
      */
     int compare(T o1, T o2);
 

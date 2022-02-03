@@ -3,9 +3,6 @@ package com.yunn.autumn.designpatterns.strategy;
 /**
  * Dog
  *
- * @Author: yunN
- * @CreateTime: 2020/08/25
- * @Description:
  */
 public class Dog implements Comparator<Dog> {
 

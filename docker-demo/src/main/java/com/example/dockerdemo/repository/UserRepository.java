@@ -1,7 +1,6 @@
-package com.example.dockerdemo.mapper;
+package com.example.dockerdemo.repository;
 
 import com.example.dockerdemo.model.User;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

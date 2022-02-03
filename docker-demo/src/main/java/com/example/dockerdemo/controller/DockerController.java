@@ -2,9 +2,8 @@ package com.example.dockerdemo.controller;
 
 import com.example.dockerdemo.common.UpdateTool;
 import com.example.dockerdemo.exception.TestException;
-import com.example.dockerdemo.mapper.UserRepository;
+import com.example.dockerdemo.repository.UserRepository;
 import com.example.dockerdemo.model.User;
-import com.example.dockerdemo.specification.UserSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

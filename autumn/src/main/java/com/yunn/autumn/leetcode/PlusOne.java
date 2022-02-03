@@ -37,36 +37,33 @@ import java.util.Arrays;
  */
 public class PlusOne {
 
-    /**
-     * 处理不了整型溢出的问题
-     *
-     * @param digits .
-     * @return .
-     */
     public int[] plusOne(int[] digits) {
-        int length = digits.length;
-        //4321 = 1*1 + 2*10 + 3*100 + 4*1000
-        //     = 4*length-i + 3*length-i + 2*length-i + 1*length-i  0<= i <4
-        //     = j*lenth-i + ……   j从lenth - 1 开始递减，直到j=0
-        int j = length - 1;
-        int sum = 0;
-        for (int i = 0; i < length; i++) {
-            if (j < 0) break;
-            sum += digits[i] * Math.pow(10, (length - i - 1));
+
+        int carry = 1;
+
+        // 迭代替换数组中的每个元素
+        // 1. 数组当前位 + 1 < 10
+        //        则数组当前位的值 就是+1
+        // 2. 数组当前位 + 1 >= 10
+        //        则数组当前位的值 就是 和对10取余，且进制位 /10
+        for (int i = digits.length - 1; i >= 0; i--) {
+            int value = digits[i];
+            digits[i] = (value + carry) % 10;
+            carry = (value + carry) / 10;
         }
-        System.out.println(sum);
-        sum = sum + 1;
-        String resultStr = String.valueOf(sum);
-        int[] resultArr = new int[resultStr.length()];
-        for (int i = 0; i < resultArr.length; i++) {
-            resultArr[i] = Character.getNumericValue(resultStr.charAt(i));
+
+        if (carry == 1) {
+            int[] result = new int[digits.length + 1];
+            result[0] = 1;
+            System.arraycopy(digits, 0, result, 1, result.length - 1);
+            return result;
         }
-        return resultArr;
+        return digits;
     }
 
     @Test
     public void testPlusOne() {
-        int[] digits = {9,9,9,9,9,9,9,9,9,9};
+        int[] digits = {9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
         System.out.println(Arrays.toString(plusOne(digits)));
     }
 

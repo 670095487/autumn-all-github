@@ -1,11 +1,13 @@
 package com.yunn.autumn.leetcode;
 
+import org.junit.Test;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * MaxSubArray
- *
- * @author yunN
- * @createTime 2021年03月10日 17:02
- * @description 给定一个整数数组 nums ，
+ * <p>
  * 找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
  * <p>
  * 输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
@@ -23,10 +25,29 @@ public class MaxSubArray {
 
     public int maxSubArray(int[] nums) {
 
-        for (int i = 0; i < nums.length; i++) {
-
+        if (nums.length == 1) {
+            return nums[0];
         }
-        return -1;
+
+        int pre = 0;
+        int maxNum = nums[0];
+
+        for (int num : nums) {
+            pre = Math.max(pre + num, num);
+            maxNum = Math.max(pre, maxNum);
+        }
+        return maxNum;
     }
 
+    @Test
+    public void testMaxNSubArray() {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(maxSubArray(nums));
+    }
+
+    @Test
+    public void test1() {
+        String s = "PMT" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyMMdd")) + "1";
+        System.out.println(s);
+    }
 }
